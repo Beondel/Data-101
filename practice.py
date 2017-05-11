@@ -13,6 +13,11 @@ silver = [11, 5, 10, 7, 7, 6, 3, 0, 8, 4, 1, 4, 3, 7, 4, 2, 4, 3, 1, 0, 0, 2, 2,
 bronze = [9, 10, 5, 12, 9, 5, 2, 1, 5, 7, 1, 2, 2, 6, 2, 4, 3, 1, 2, 1, 0, 6, 2, 1, 0, 1]
 
 
-country_medals_sochi_dataframe = pn.DataFrame(
-    {'country name': pn.Series(countries), 'gold': pn.Series(gold), 'silver': pn.Series(silver), 'bronze': pn.Series(bronze)})
-print(country_medals_sochi_dataframe)
+df = pn.DataFrame({'country name': pn.Series(countries),
+                   'gold': pn.Series(gold),
+                   'silver': pn.Series(silver),
+                   'bronze': pn.Series(bronze)})
+
+bronzeSeries = df['bronze'][df['gold'] >= 1]
+avgBronze = np.mean(bronzeSeries)
+print(avgBronze)
