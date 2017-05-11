@@ -21,3 +21,6 @@ df = pn.DataFrame({'country name': pn.Series(countries),
 bronzeSeries = df['bronze'][df['gold'] >= 1]
 avgBronze = np.mean(bronzeSeries)
 print(avgBronze)
+
+avgMedals2 = df[['gold', 'silver', 'bronze']].apply(np.mean)
+print(avgMedals2)
