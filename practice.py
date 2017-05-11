@@ -1,34 +1,18 @@
 import pandas as pn
 import numpy as np
 
-numbers = [1, 2, 3, 4, 5]
-print(np.mean(numbers))
-print(np.median(numbers))
-print(np.std(numbers))
+countries = ['Russian Fed.', 'Norway', 'Canada', 'United States',
+             'Netherlands', 'Germany', 'Switzerland', 'Belarus',
+             'Austria', 'France', 'Poland', 'China', 'Korea',
+             'Sweden', 'Czech Republic', 'Slovenia', 'Japan',
+             'Finland', 'Great Britain', 'Ukraine', 'Slovakia',
+             'Italy', 'Latvia', 'Australia', 'Croatia', 'Kazakhstan']
 
-import pandas as pd
-
-
-series = pd.Series(['Dave', 'Cheng-Han', 'Udacity', 42, -1789710578])
-print(series)
-
-
-series = pd.Series(['Dave', 'Cheng-Han', 359, 9001],
-                   index=['Instructor', 'Curriculum Manager',
-                          'Course Number', 'Power Level'])
-print(series)
+gold = [13, 11, 10, 9, 8, 8, 6, 5, 4, 4, 4, 3, 3, 2, 2, 2, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0]
+silver = [11, 5, 10, 7, 7, 6, 3, 0, 8, 4, 1, 4, 3, 7, 4, 2, 4, 3, 1, 0, 0, 2, 2, 2, 1, 0]
+bronze = [9, 10, 5, 12, 9, 5, 2, 1, 5, 7, 1, 2, 2, 6, 2, 4, 3, 1, 2, 1, 0, 6, 2, 1, 0, 1]
 
 
-series = pd.Series(['Dave', 'Cheng-Han', 359, 9001],
-                   index=['Instructor', 'Curriculum Manager',
-                          'Course Number', 'Power Level'])
-print(series['Instructor'])
-print("")
-print(series[['Instructor', 'Curriculum Manager', 'Course Number']])
-
-
-cuteness = pd.Series([1, 2, 3, 4, 5], index=['Cockroach', 'Fish', 'Mini Pig',
-                                             'Puppy', 'Kitten'])
-print(cuteness > 3)
-print("")
-print(cuteness[cuteness > 3])
+country_medals_sochi_dataframe = pn.DataFrame(
+    {'country name': pn.Series(countries), 'gold': pn.Series(gold), 'silver': pn.Series(silver), 'bronze': pn.Series(bronze)})
+print(country_medals_sochi_dataframe)
