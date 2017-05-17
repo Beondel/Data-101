@@ -1,26 +1,21 @@
-import pandas as pn
+import pandas as pd
 import numpy as np
+from matplotlib import pyplot as plt
 
-countries = ['Russian Fed.', 'Norway', 'Canada', 'United States',
-             'Netherlands', 'Germany', 'Switzerland', 'Belarus',
-             'Austria', 'France', 'Poland', 'China', 'Korea',
-             'Sweden', 'Czech Republic', 'Slovenia', 'Japan',
-             'Finland', 'Great Britain', 'Ukraine', 'Slovakia',
-             'Italy', 'Latvia', 'Australia', 'Croatia', 'Kazakhstan']
+df = pd.read_csv('./single_family_residences_07076.csv')
+print(df)
+houseValues = [x for x in df['Value']]
+yearMonthDays = []
+for i in df['Date']:
+    stringDate = str(i)
+    yearMonthDays.append(stringDate.split("-"))
 
-gold = [13, 11, 10, 9, 8, 8, 6, 5, 4, 4, 4, 3, 3, 2, 2, 2, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0]
-silver = [11, 5, 10, 7, 7, 6, 3, 0, 8, 4, 1, 4, 3, 7, 4, 2, 4, 3, 1, 0, 0, 2, 2, 2, 1, 0]
-bronze = [9, 10, 5, 12, 9, 5, 2, 1, 5, 7, 1, 2, 2, 6, 2, 4, 3, 1, 2, 1, 0, 6, 2, 1, 0, 1]
+houseValues = list(reversed(houseValues))
+yearMonthDays = list(reversed(yearMonthDays))
+print(houseValues)
+print(yearMonthDays)
 
-
-df = pn.DataFrame({'country name': pn.Series(countries),
-                   'gold': pn.Series(gold),
-                   'silver': pn.Series(silver),
-                   'bronze': pn.Series(bronze)})
-
-bronzeSeries = df['bronze'][df['gold'] >= 1]
-avgBronze = np.mean(bronzeSeries)
-print(avgBronze)
-
-avgMedals2 = df[['gold', 'silver', 'bronze']].apply(np.mean)
-print(avgMedals2)
+intDateList = [int(''.join(x)) for x in yearMonthDays]
+print(intDateList)
+plt.plot(intDateList, houseValues)
+plt.show()
